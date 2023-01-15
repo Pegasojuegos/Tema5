@@ -1,6 +1,5 @@
 
-public class Bicicleta {
-	protected int velocidadActual=10;
+public class Bicicleta extends Vehículo implements Imprimible{
 	protected int platoActual;
 	protected int piñonActual;
 	protected final int platoDefecto=1;
@@ -8,7 +7,7 @@ public class Bicicleta {
 	
 	
 	public Bicicleta(int velocidadActual, int platoActual, int piñonActual) {
-		super();
+		super(piñonActual);
 		this.velocidadActual = velocidadActual;
 		this.platoActual = platoActual;
 		this.piñonActual = piñonActual;
@@ -38,6 +37,16 @@ public class Bicicleta {
 	public void cambiarPiñon() {
 		piñonActual=piñonDefecto;
 	}
+	@Override
+	public void imprime() {
+		System.out.println("Velocidad: "+velocidadActual+"\nPiñón: "+piñonActual+"\nPlato: "+platoActual);
+	}
+	@Override
+	public int[] getAtributos() {
+		int res[]= {piñonActual,platoActual};
+		return res;
+	}
+	
 	public int getVelocidadActual() {
 		return velocidadActual;
 	}
@@ -62,6 +71,8 @@ public class Bicicleta {
 	public int getPiñonDefecto() {
 		return piñonDefecto;
 	}
+
+	
 	
 	
 

@@ -29,5 +29,7 @@ public class CarreraBicis {
 	System.out.println(miBicicleta.getVelocidadActual());
 	System.out.println(tuBicicleta.getVelocidadActual());
 	System.out.println(bicicleta3.getVelocidadActual());
+	
+	miBicicleta.imprime();
  }
 }

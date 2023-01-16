@@ -13,6 +13,23 @@ public class Multimedia {
 		this.formato=formatos.valueOf(formato);
 		this.duración=duración;
 	}
+	
+	public Multimedia() {};
+
+	public boolean equals(Multimedia m) {
+		if(this.título==m.título) {
+			if(this.autor==m.autor){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public String toString() {
+		return "Multimedia [título=" + título + ", autor=" + autor + ", formato=" + formato + ", duración=" + duración
+				+ "]";
+	}
 
 	public String getTítulo() {
 		return título;

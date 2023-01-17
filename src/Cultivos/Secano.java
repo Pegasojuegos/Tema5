@@ -3,22 +3,17 @@ package Cultivos;
 public class Secano extends Cultivo {
 	private boolean ahogada;
 	
-	public Secano(String nombre, int tiempoParaCrecer) {
-		super(nombre, tiempoParaCrecer);
+	public Secano(String nombre, int tiempoParaCrecer,boolean recosechable) {
+		super(nombre, tiempoParaCrecer, recosechable);
 		ahogada=false;
 	}
 
 	@Override
 	public void crecer() {
-		if(agua>=20&nutrientes>=10) {
-			tiempoParaCrecer--;
-		}
-		if(tiempoParaCrecer<=0) {
-			florecida=true;
-		}
-		if(agua>120) {
-			ahogada=true;
-		}		
+		if(agua>=30) tiempoParaCosecha--;
+		if(nutrientes>=10) tiempoParaCosecha--;
+		if(tiempoParaCosecha<=0) cosechable=true;
+		if(agua>120) ahogada=true;
 	}
 
 	public boolean isAhogada() {

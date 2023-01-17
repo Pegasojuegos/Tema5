@@ -3,17 +3,20 @@ package Cultivos;
 public abstract class Cultivo {
 	protected int agua;
 	protected int nutrientes;
-	protected int tiempoParaCrecer;
+	protected int tiempoParaCosecha;
+	protected final int tiempoEntreCosechas;
 	protected String nombre;
-	protected boolean florecida;
+	protected boolean cosechable;
+	protected boolean recosechable;
 	
-	public Cultivo(String nombre,int tiempoParaCrecer) {
+	public Cultivo(String nombre,int tiempoParaCrecer,boolean recosechable) {
 		this.nombre=nombre;
-		this.tiempoParaCrecer=tiempoParaCrecer;
+		this.tiempoParaCosecha=tiempoParaCrecer;
 		agua=0;
 		nutrientes=0;
-		florecida=false;
-		
+		cosechable=false;
+		this.recosechable=recosechable;
+		tiempoEntreCosechas=tiempoParaCrecer/2;
 	}
 	
 	public void llover() {
@@ -27,15 +30,39 @@ public abstract class Cultivo {
 	public abstract void crecer() ;
 
 	public int getTiempoParaCrecer() {
-		return tiempoParaCrecer;
+		return tiempoParaCosecha;
+	}
+	
+	public boolean cosechar() {
+		if(cosechable==true) {
+			cosechable=false;
+			tiempoParaCosecha=tiempoEntreCosechas;
+			return true;
+		}else return false;
 	}
 
+	public String toString() {
+		StringBuilder res=new StringBuilder();
+		res.append(nombre+":");
+		if(tiempoParaCosecha<=0) {
+			res.append('⚜');
+		}else
+		for(int i=0;i<tiempoParaCosecha;i++) {
+			res.append('-');
+		}
+		return res.toString();
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
 
 	public boolean isFlorecida() {
-		return florecida;
+		return cosechable;
+	}
+
+	public boolean isRecosechable() {
+		return recosechable;
 	}
 	
 	

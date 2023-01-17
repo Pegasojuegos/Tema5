@@ -3,22 +3,17 @@ package Cultivos;
 public class Regadío extends Cultivo {
 	private boolean seco;
 	
-	public Regadío(String nombre, int tiempoParaCrecer) {
-		super(nombre, tiempoParaCrecer);
+	public Regadío(String nombre, int tiempoParaCrecer,boolean recosechable) {
+		super(nombre, tiempoParaCrecer, recosechable);
 		seco=false;
 	}
 
 	@Override
 	public void crecer() {
-		if(agua>=50&nutrientes>=30) {
-			tiempoParaCrecer--;
-		}
-		if(tiempoParaCrecer<=0) {
-			florecida=true;
-		}
-		if(agua<10) {
-			seco=true;
-		}
+		if(agua>=50) tiempoParaCosecha--;
+		if(nutrientes>=30) 	tiempoParaCosecha--;
+		if(tiempoParaCosecha<=0) cosechable=true;
+		if(agua<10) seco=true;
 	}
 	
 	public void regar() {

@@ -1,22 +1,29 @@
 package Cultivos;
 
 public class Huerto {
-	private Cultivo h1[];
-	private int tamaño;
+	private Cultivo huerto[];
 	
 	public Huerto(int tamaño) {
-		h1=new Cultivo[tamaño];
+		huerto=new Cultivo[tamaño];
+	}
+	
+	public void pasarDía() {
+		int llover=(int)(Math.random()*10+1);
+		for(int i=0;i<huerto.length;i++) {
+			if(llover<=4) huerto[i].llover();
+			huerto[i].crecer();
+		}
 	}
 	
 	public void plantar(Cultivo c1) {
-		for(Cultivo c:h1) {
-			if(c==null) {
+		for(int c=0;c<huerto.length;c++) {
+			if(huerto[c]==null) {
 				if(c1 instanceof Regadío) {
-					c=new Regadío(c1.getNombre(), c1.getTiempoParaCrecer());
+					huerto[c]=new Regadío(c1.getNombre(), c1.getTiempoParaCrecer());
 					break;
 				}
 				if(c1 instanceof Secano) {
-					c=new Secano(c1.getNombre(), c1.getTiempoParaCrecer());
+					huerto[c]=new Secano(c1.getNombre(), c1.getTiempoParaCrecer());
 					break;
 				}
 			}//if

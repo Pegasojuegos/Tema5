@@ -5,21 +5,19 @@ import java.util.Arrays;
 public class ListaMultimedia {
 	private int cantidad;
 	private Multimedia lista[];
-	private Multimedia defecto=new Multimedia("a", "a", "mp3", 5);
+	
 	
 	public ListaMultimedia(int cantidad) {
 		this.cantidad=cantidad;
 		this.lista=new Multimedia[cantidad];
-		for(int i=0;i<lista.length;i++) {
-			lista[i]=defecto;
-		}
+		
 		
 	}
 	
 	public int size() {
 		int cont=0;
 		for (Multimedia m:lista) {
-			if(!m.equals(defecto)) {
+			if(m!=null) {
 				cont++;
 			}
 		}
@@ -27,9 +25,9 @@ public class ListaMultimedia {
 	}
 	
 	public boolean add(Multimedia m) {
-		for (Multimedia i:lista) {
-			if(!i.equals(m)) {
-				i=m;
+		for (int i=0;i<lista.length;i++) {
+			if(lista[i]==null) {
+				lista[i]=m;
 				return true;
 			}
 		}
@@ -49,8 +47,10 @@ public class ListaMultimedia {
 	public String toString() {
 		StringBuilder res=new StringBuilder();
 		for(Multimedia m:lista) {
+			if(m!=null) {
 			res.append(m.toString());
 			res.append("\n");
+			}
 		}
 		return res.toString();
 	}

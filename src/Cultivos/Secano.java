@@ -10,13 +10,13 @@ public class Secano extends Cultivo {
 
 	@Override
 	public void crecer() {
-		if(agua>=30) tiempoParaCosecha--;
-		if(nutrientes>=10) tiempoParaCosecha--;
+		if(agua>=30) tiempoParaCosecha--;agua-=30;
+		if(nutrientes>=10) tiempoParaCosecha--;nutrientes-=10;
 		if(tiempoParaCosecha<=0) cosechable=true;
 		if(agua>120) ahogada=true;
 	}
 
-	public boolean isAhogada() {
+	public boolean isMuerta() {
 		return ahogada;
 	}
 

@@ -10,31 +10,39 @@ public class Huerto {
 	//Regar una cultivo concreto
 	public void regar(String nombre) {
 		for(int i=0;i<huerto.length;i++) {
-			if(huerto[i].getNombre().equals(nombre)&huerto[i] instanceof Regadío) {
-				((Regadío)huerto[i]).regar();
+			if(huerto[i]!=null) {
+				if(huerto[i].getNombre().equals(nombre)&huerto[i] instanceof Regadío) {
+					((Regadío)huerto[i]).regar();
+				}
 			}
 		}
 	}
 	//Regar todas los cultivos que sean de regadío
 	public void regar() {
 		for(int i=0;i<huerto.length;i++) {
-			if(huerto[i] instanceof Regadío) {
-				((Regadío)huerto[i]).regar();
+			if(huerto[i]!=null) {
+				if(huerto[i] instanceof Regadío) {
+					((Regadío)huerto[i]).regar();
+				}
 			}
 		}
 	}
 	//Abonar a un cultivo concreto
 	public void abonar(String nombre) {
 		for(int i=0;i<huerto.length;i++) {
-			if(huerto[i].getNombre().equals(nombre)) {
-				((Regadío)huerto[i]).abonar();
+			if(huerto[i]!=null) {
+				if(huerto[i].getNombre().equals(nombre)) {
+					((Regadío)huerto[i]).abonar();
+				}
 			}
 		}
 	}
 	//Abonar todos los cultivos
 	public void abonar() {
 		for(int i=0;i<huerto.length;i++) {
-			huerto[i].abonar();
+			if(huerto[i]!=null) {
+				huerto[i].abonar();
+			}
 		}
 	}
 	
@@ -42,24 +50,31 @@ public class Huerto {
 	public void pasarDía() {
 		int llover=(int)(Math.random()*10+1);
 		for(int i=0;i<huerto.length;i++) {
-			if(llover<=4) huerto[i].llover();
-			huerto[i].crecer();
+			if(huerto[i]!=null) {
+				if(llover<=4) huerto[i].llover();
+				huerto[i].crecer();
+				if(huerto[i].isMuerta()==true)huerto[i]=null;
+			}
 		}
 	}
 	//Cosecha un cultivo concreto
 	public void cosechar(String nombre) {
 		for(int i=0;i<huerto.length;i++) {
-			if(huerto[i].getNombre().equals(nombre)) {
-				((Regadío)huerto[i]).cosechar();
-				if(huerto[i].isRecosechable()==false)huerto[i]=null;
+			if(huerto[i]!=null) {
+				if(huerto[i].getNombre().equals(nombre)) {
+					((Regadío)huerto[i]).cosechar();
+					if(huerto[i].isRecosechable()==false)huerto[i]=null;
+				}
 			}
 		}
 	}
 	//Intenta cosechar todos los cultivos
 	public void cosechar() {
 		for(int i=0;i<huerto.length;i++) {
-			huerto[i].cosechar();
-			if(huerto[i].isRecosechable()==false)huerto[i]=null;
+			if(huerto[i]!=null) {
+				huerto[i].cosechar();
+				if(huerto[i].isRecosechable()==false&huerto[i].isCosechable()==true)huerto[i]=null;
+			}
 		}
 	}
 	
@@ -81,12 +96,14 @@ public class Huerto {
 	
 	public String toString() {
 		StringBuilder res=new StringBuilder();
+		res.append("\u001B[32m");
 		for(Cultivo c:huerto) {
 			if(c!=null) {
 				res.append(c);
 				res.append("\n");
 			}
 		}
+		res.append("\u001B[0m");
 		return res.toString();
 	}
 }

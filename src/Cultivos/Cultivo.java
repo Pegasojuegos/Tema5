@@ -19,6 +19,8 @@ public abstract class Cultivo {
 		tiempoEntreCosechas=tiempoParaCrecer/2;
 	}
 	
+	public abstract boolean isMuerta();
+	
 	public void llover() {
 		agua+=50;
 	}
@@ -63,6 +65,10 @@ public abstract class Cultivo {
 
 	public boolean isRecosechable() {
 		return recosechable;
+	}
+
+	public boolean isCosechable() {
+		return cosechable;
 	}
 	
 	

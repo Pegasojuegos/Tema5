@@ -15,6 +15,8 @@ public class Aplicación {
 		System.out.println(lista);
 		Multimedia d4=new Disco(d3.título, d3.autor, "avi", 10, "rock");
 		System.out.println(lista);
+		
+		Math.random();
 	}
 
 }

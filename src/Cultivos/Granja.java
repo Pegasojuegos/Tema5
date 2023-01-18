@@ -34,7 +34,7 @@ public class Granja {
 				+ "Como buen sobrino te diriges al huerto, coges una hoz y aras el pequeño\n"
 				+ "terreno, observándos trozos para en\n"
 				+ "cada uno poder plantar un cultivo distinto\n"
-				+ "\n¿En cuantos trozos lo divides?olo decides separarlo en unos cuant\n"
+				+ "\n¿En cuantos trozos lo divides?\n"
 				+ "");
 		h1=new Huerto(s.nextInt());
 		System.out.println(""
@@ -43,7 +43,49 @@ public class Granja {
 				+ "\n¿Cuántas plantas quieres cultivar?\n"
 				+ "");
 		int cantidad=s.nextInt();
-		
+		s.nextLine();
+		System.out.println("Te acercas a una estantería para coger "+cantidad +" bolsitas de semillas, y ves\n"
+				+ "que cada una tiene su nombre, días que tardará  en crecer, si son\n"
+				+ "de secano o regadío y si son recosechables una vez dan su primera cosecha.\n"
+				+ "\n¿Qué semillas decides coger?\n");
+		for(int i=0;i<cantidad;i++) {
+			System.out.print("Semillas "+(i+1)+"\n   -Nombre: ");
+			String nombre=s.nextLine();
+			System.out.print("   -Días que tarda en crecer: ");
+			int días=s.nextInt();
+			System.out.print("   -Recosechables(true/false): ");
+			boolean recosechables=s.nextBoolean();
+			s.nextLine();
+			System.out.println("   -secano o regadío: ");
+			String tipo = s.nextLine();
+			boolean valido=false;
+			while(valido==false) {
+				switch(tipo) {
+				case "secano":
+					h1.plantar(new Secano(nombre, días, recosechables));
+					valido=true;
+					break;
+				case "regadío":
+					h1.plantar(new Regadío(nombre,días,recosechables));
+					valido=true;
+					break;
+				default:
+					valido=false;
+				}
+			}
+			System.out.println("Coges todas las semillas y las vas esparciendo por cada parcela que habías\n"
+					+ "creado, ahora solo queda esperar e ir regando y abonado de vez en cuando.\n"
+					+ "Solo tendrás que introducir el número de la opción que quieres realizar.\n");
+		}
+		boolean cerrar=false;
+		while(cerrar==false) {
+			cerrar=operación(h1);
+		}
+	}
+	public static boolean operación(Huerto h1) {
+		String opciones="";
+		StringBuilder res=new StringBuilder();
+		res.append(h1);
 	}
 	
 

@@ -2,6 +2,7 @@ package Cultivos;
 
 public class Huerto {
 	private Cultivo huerto[];
+	private Inventario inventario=new Inventario();
 	
 	public Huerto(int tamaño) {
 		huerto=new Cultivo[tamaño];
@@ -31,7 +32,7 @@ public class Huerto {
 	public void abonar(String nombre) {
 		for(int i=0;i<huerto.length;i++) {
 			if(huerto[i]!=null) {
-				if(huerto[i].getNombre().equals(nombre)) {
+				if(huerto[i].getNombre().equals(nombre)&huerto[i]instanceof Regadío) {
 					((Regadío)huerto[i]).abonar();
 				}
 			}
@@ -62,7 +63,7 @@ public class Huerto {
 		for(int i=0;i<huerto.length;i++) {
 			if(huerto[i]!=null) {
 				if(huerto[i].getNombre().equals(nombre)) {
-					((Regadío)huerto[i]).cosechar();
+					if(huerto[i].cosechar()==true) inventario.añadir(huerto[i].nombre);
 					if(huerto[i].isRecosechable()==false)huerto[i]=null;
 				}
 			}
@@ -72,7 +73,7 @@ public class Huerto {
 	public void cosechar() {
 		for(int i=0;i<huerto.length;i++) {
 			if(huerto[i]!=null) {
-				huerto[i].cosechar();
+				if(huerto[i].cosechar()==true) inventario.añadir(huerto[i].nombre);
 				if(huerto[i].isRecosechable()==false&huerto[i].isCosechable()==true)huerto[i]=null;
 			}
 		}
@@ -105,5 +106,9 @@ public class Huerto {
 		}
 		res.append("\u001B[0m");
 		return res.toString();
+	}
+
+	public Inventario getInventario() {
+		return inventario;
 	}
 }

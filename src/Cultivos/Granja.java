@@ -107,7 +107,8 @@ public class Granja {
 				+ "  |-4.1.Todo\n"
 				+ "  |-4.2.Una en concreto\n"
 				+ "  -5.Dormir\n"
-				+ "  -6.Pescar\n";
+				+ "  -6.Pescar\n"
+				+ "  -7.Inventario";
 		StringBuilder res=new StringBuilder();
 		res.append(h1.toString()+opciones);
 		System.out.println(res);
@@ -148,6 +149,10 @@ public class Granja {
 			return false;
 		case "6":
 			System.out.println(Pesca.pescar());
+			s.nextLine();
+			return false;
+		case "7":
+			System.out.println(h1.getInventario());
 			s.nextLine();
 			return false;
 		case "cerrar":

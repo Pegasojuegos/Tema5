@@ -8,6 +8,8 @@ public class Granja {
 	
 	public static Scanner s=new Scanner(System.in);
 	public static final String limpiar="\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+	public static String pesca;
+
 	
 	public static void main(String[] args) {
 		Huerto h1=new Huerto(5);
@@ -63,7 +65,7 @@ public class Granja {
 			System.out.print("   -Recosechables(true/false): ");
 			boolean recosechables=s.nextBoolean();
 			s.nextLine();
-			System.out.println("   -secano o regadío: ");
+			System.out.print("   -secano o regadío: ");
 			String tipo = s.nextLine();
 			boolean valido=false;
 			while(valido==false) {
@@ -108,7 +110,8 @@ public class Granja {
 				+ "  |-4.2.Una en concreto\n"
 				+ "  -5.Dormir\n"
 				+ "  -6.Pescar\n"
-				+ "  -7.Inventario";
+				+ "  -7.Inventario\n"
+				+ "  -8.Ordenar huerto";
 		StringBuilder res=new StringBuilder();
 		res.append(h1.toString()+opciones);
 		System.out.println(res);
@@ -145,15 +148,28 @@ public class Granja {
 			return false;
 		case "5":
 			h1.pasarDía();
-			dormir();
+			try {
+				dormir();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			return false;
 		case "6":
-			System.out.println(Pesca.pescar());
+			try {
+				pesca=Pesca.pescar();
+				System.out.println(pesca);
+				h1.añadeAInventario(pescado(pesca));
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			s.nextLine();
 			return false;
 		case "7":
 			System.out.println(h1.getInventario());
 			s.nextLine();
+			return false;
+		case "8":
+			h1.ordenar();
 			return false;
 		case "cerrar":
 			return true;
@@ -200,7 +216,7 @@ public class Granja {
 	}
 	
 	//Función que hace una animación de dormir mientras avanza el día
-	public static void dormir() {
+	public static void dormir() throws InterruptedException {
 		String uno=""
 				+ "\n"
 				+ "  ()_()\n"
@@ -223,14 +239,28 @@ public class Granja {
 				+ " c(\")(\")";
 		for(int i=0;i<2;i++) {
 			System.out.println(limpiar+uno);
-			s.nextLine();
+			Thread.sleep(250);
 			System.out.println(limpiar+dos);
-			s.nextLine();
+			Thread.sleep(250);
 			System.out.println(limpiar+tres);
-			s.nextLine();
+			Thread.sleep(250);
 			System.out.println(limpiar+cuatro);
-			s.nextLine();
+			Thread.sleep(250);
 		}
+	}
+	public static String pescado(String pez) {
+		String res="";
+		if(pez.contains("un ")) {
+			for(int i=pez.lastIndexOf("un ")+3;i<pez.length()-1;i++) {
+				res+=pez.charAt(i);
+			}
+		}
+		if(pez.contains("una ")) {
+			for(int i=pez.lastIndexOf("una ")+4;i<pez.length()-1;i++) {
+				res+=pez.charAt(i);
+			}
+		}
+		return res;
 	}
 	
 	

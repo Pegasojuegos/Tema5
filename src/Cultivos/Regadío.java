@@ -1,5 +1,7 @@
 package Cultivos;
-
+/**@author pegaso
+ * @version 1.0
+ * */
 public class Regadío extends Cultivo {
 	private boolean seco;
 	

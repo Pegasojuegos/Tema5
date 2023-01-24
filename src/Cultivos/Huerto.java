@@ -4,6 +4,7 @@ public class Huerto {
 	private Cultivo huerto[];
 	private Inventario inventario=new Inventario();
 	
+
 	public Huerto(int tamaño) {
 		huerto=new Cultivo[tamaño];
 	}

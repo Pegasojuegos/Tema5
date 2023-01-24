@@ -198,6 +198,7 @@ public class Granja {
 			}
 		}
 	}
+	
 	//Función que hace una animación de dormir mientras avanza el día
 	public static void dormir() {
 		String uno=""

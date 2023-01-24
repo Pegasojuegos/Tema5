@@ -1,6 +1,6 @@
 package Cultivos;
 
-public abstract class Cultivo {
+public abstract class Cultivo implements Comparable<Cultivo>{
 	protected int agua;
 	protected int nutrientes;
 	protected int tiempoParaCosecha;
@@ -8,6 +8,20 @@ public abstract class Cultivo {
 	protected String nombre;
 	protected boolean cosechable;
 	protected boolean recosechable;
+	
+	@Override
+	public int compareTo(Cultivo c) {
+		if(this.tiempoEntreCosechas>c.tiempoEntreCosechas) {
+			if(this.isRecosechable()) {
+				if(this.nombre.compareTo(c.nombre)>0) {
+					return 3;
+				}
+				return 2;
+			}
+			return 1;
+		}
+		return 0;
+	}
 	
 	public Cultivo(String nombre,int tiempoParaCrecer,boolean recosechable) {
 		this.nombre=nombre;

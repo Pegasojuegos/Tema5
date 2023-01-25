@@ -9,7 +9,7 @@ public final class Pesca {
 	
 	/**Método que escribe por pantalla a un conegito pescando, simulando una animación. Al final  pesca
 	 * un pez aleatório
-	 * @return St */
+	 * @return  string dando la enhorabuena y diciendo que pez has pescado*/
 	public static String pescar() throws InterruptedException {
 		String limpiar="\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 		String pescador=""
@@ -68,6 +68,6 @@ public final class Pesca {
 		Thread.sleep(100);
 		System.out.println(limpiar+pescador5);
 		Thread.sleep(100);
-		return "¡Enorabuena pescaste "+peces[(int)(Math.random()*peces.length)]+"!" ;
+		return "¡Enhorabuena pescaste "+peces[(int)(Math.random()*peces.length)]+"!" ;
 	}
 }

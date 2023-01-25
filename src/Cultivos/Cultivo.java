@@ -12,15 +12,15 @@ public abstract class Cultivo implements Comparable<Cultivo>{
 	@Override
 	public int compareTo(Cultivo c) {
 		if(this.tiempoEntreCosechas>c.tiempoEntreCosechas) {
-			if(this.isRecosechable()) {
-				if(this.nombre.compareTo(c.nombre)>0) {
-					return 3;
-				}
-				return 2;
-			}
 			return 1;
+		}else {
+			if(this.tiempoEntreCosechas==c.tiempoEntreCosechas) {
+				
+			}else {
+				return -1;
+			}
+			
 		}
-		return 0;
 	}
 	
 	public Cultivo(String nombre,int tiempoParaCrecer,boolean recosechable) {

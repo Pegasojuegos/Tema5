@@ -1,5 +1,7 @@
 package Cultivos;
 
+import java.util.Arrays;
+
 public class Inventario {
 	private String lista[];
 	private int cantidad[];
@@ -11,41 +13,58 @@ public class Inventario {
 		cantidad=new int[0];
 	}
 	
-	public void añadir(String item) {
-		boolean  guardado=false;
-		tamaño++;
-		for(int i=0;i<lista.length;i++) {
-			if(lista[i]==item) {
-				cantidad[i]++;
-				guardado=true;
-			}
-		}
-		if(guardado==false) {
-			String tem[]=new String[tamaño];
-			int temNum[]=new int[tamaño];
-			for(int i=0;i<lista.length;i++) {
-				tem[i]=lista[i];
-				temNum[i]=cantidad[i];
-				if(i==lista.length-1) {
-					temNum[i+1]=0;
-				}
-			}
-			cantidad=temNum;
-			lista=tem;
-			for(int i=0;i<lista.length;i++) {
-				if(lista[i]==null) {
-					lista[i]=item;
-					cantidad[i]++;
+	private void ordenar() {
+		for(int i=0;i<cantidad.length-1;i++) {
+			for(int j=i;j<cantidad.length;j++) {
+				if(cantidad[i]<cantidad[j]) {
+					intercambio(i,j);
+				}else {
+					if(cantidad[i]==cantidad[j]) {
+						if(lista[i].compareTo(lista[j])>0) {
+							intercambio(i,j);
+						}
+					}
 				}
 			}
 		}
 	}
+	
+	public void añadir(String item) {
+		for(int i=0;i<lista.length;i++){
+			if(lista[i]!=null) {
+				if(lista[i].equals(item)) {
+					cantidad[i]++;
+					return;
+				}
+			}
+		}
+		//Si sale del bucle es que todavía no esta ese item guradado
+		String nuevo[]=new String[lista.length+1];
+		int nuevoNum[]=new int[cantidad.length+1];
+		for(int i=0;i<lista.length;i++) {
+			nuevo[i]=lista[i];
+			nuevoNum[i]=cantidad[i];
+		}
+		nuevo[nuevo.length-1]=item;
+		nuevoNum[nuevoNum.length-1]++;
+		lista=nuevo;
+		cantidad=nuevoNum;
+	}
 
 	public String toString() {
+		ordenar();
 		String res="Inventario\n";
 		for(int i=0;i<lista.length;i++) {
 			res+=lista[i]+" "+cantidad[i]+"\n";
 		}
 		return res;
+	}
+	private void intercambio(int i,int j) {
+		int aux1=cantidad[i];
+		cantidad[i]=cantidad[j];
+		cantidad[j]=aux1;
+		String aux2=lista[i];
+		lista[i]=lista[j];
+		lista[j]=aux2;
 	}
 }

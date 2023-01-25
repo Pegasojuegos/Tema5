@@ -1,12 +1,22 @@
 package Cultivos;
 
+import java.util.Arrays;
+
 public class Huerto {
 	private Cultivo huerto[];
 	private Inventario inventario=new Inventario();
 	
+	public void añadeAInventario(String item){
+		inventario.añadir(item);
+	}
+	
 
 	public Huerto(int tamaño) {
 		huerto=new Cultivo[tamaño];
+	}
+	
+	public void ordenar() {
+		Arrays.sort(huerto);
 	}
 	
 	//Regar una cultivo concreto

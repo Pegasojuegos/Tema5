@@ -2,14 +2,14 @@ package Cultivos;
 
 import java.util.Arrays;
 
-public class Inventario {
-	private String lista[];
+public class Inventario<T> {
+	private T lista[];
 	private int cantidad[];
 	private int tamaño;
 	
 	public Inventario() {
 		tamaño=0;
-		lista=new String[0];
+		lista=(T[]) new String[0];
 		cantidad=new int[0];
 	}
 	
@@ -20,7 +20,7 @@ public class Inventario {
 					intercambio(i,j);
 				}else {
 					if(cantidad[i]==cantidad[j]) {
-						if(lista[i].compareTo(lista[j])>0) {
+						if(((String) lista[i]).compareTo((String) lista[j])>0) {
 							intercambio(i,j);
 						}
 					}
@@ -42,12 +42,12 @@ public class Inventario {
 		String nuevo[]=new String[lista.length+1];
 		int nuevoNum[]=new int[cantidad.length+1];
 		for(int i=0;i<lista.length;i++) {
-			nuevo[i]=lista[i];
+			nuevo[i]=(String) lista[i];
 			nuevoNum[i]=cantidad[i];
 		}
 		nuevo[nuevo.length-1]=item;
 		nuevoNum[nuevoNum.length-1]++;
-		lista=nuevo;
+		lista=(T[]) nuevo;
 		cantidad=nuevoNum;
 	}
 
@@ -63,8 +63,8 @@ public class Inventario {
 		int aux1=cantidad[i];
 		cantidad[i]=cantidad[j];
 		cantidad[j]=aux1;
-		String aux2=lista[i];
+		String aux2=(String) lista[i];
 		lista[i]=lista[j];
-		lista[j]=aux2;
+		lista[j]=(T) aux2;
 	}
 }

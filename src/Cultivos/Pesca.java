@@ -1,10 +1,15 @@
 package Cultivos;
 
-import java.util.Scanner;
-
+/**@author pegaso
+ * @version 2.1
+ * Clase final que no permite crear instancias de ella, sino que guarda una lista de peces los cuales
+ * pueden ser pescados llamando a su método.*/
 public final class Pesca {
 	static final String peces[]= {"un Bacalao","un Salmón","un Pez globo","una Anchoa","un Atún","una Sardina","un Besugo","una Perca","una Lubina","una Trucha arcoíris","un Lucio","un Cachuelo","una Carpa","un Pez gato","un Saturi","un Pez sol","un Salmonete","un Arenque","una Anguila","un Pulpo","un Pargo colorado","un Calamar","un Pepino de mar","un Superpepino","un Pez fantasma","un Pez piedra","un Pez carámbano","una Anguila de lava","un Lenguado","una Carpa escorpión","una Platija","una Carpa medianoche","un Esturión","una Trucha tigre","un Siluro","una Tilapia","un Bardo","un Dorado","un Atún blanco","un Sábalo","un Bacalao largo","un Fletán","un Muyu","un Salmón sombrío","un Babolín","un Mantarraya","un Pez león","un Pez disco","un Rape","una Carpa mutante D:","una gambita :D","un caracolcito :D","una bota","una piedra","una bolsa de plástico","un calcetín"};
 	
+	/**Método que escribe por pantalla a un conegito pescando, simulando una animación. Al final  pesca
+	 * un pez aleatório
+	 * @return St */
 	public static String pescar() throws InterruptedException {
 		String limpiar="\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 		String pescador=""

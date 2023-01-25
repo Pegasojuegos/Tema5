@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Huerto {
 	private Cultivo huerto[];
-	private Inventario inventario=new Inventario();
+	private Inventario inventario=new Inventario<String>();
 	
 	public void añadeAInventario(String item){
 		inventario.añadir(item);

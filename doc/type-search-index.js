@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"Cultivos","l":"Cultivo"},{"p":"Cultivos","l":"Granja"},{"p":"Cultivos","l":"Huerto"},{"p":"Cultivos","l":"Inventario"},{"p":"Cultivos","l":"Pesca"},{"p":"Cultivos","l":"Regadío"},{"p":"Cultivos","l":"Secano"}];updateSearchResults();

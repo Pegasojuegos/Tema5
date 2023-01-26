@@ -1,13 +1,16 @@
 package Cultivos;
-/**@author pegaso
- * @version 1.0
- * Esta subclase crea cultivos de tipo regadío, la cual tiene la capacidad de secarse, y de ser regada
- * y sobreescribe el metodo crecer*/
+/**Esta subclase crea cultivos de tipo regadío, la cual tiene la capacidad de secarse, y de ser regada
+ * y sobreescribe el metodo crecer.
+ * *@author pegaso
+ * @version 1.0*/
 public class Regadío extends Cultivo {
 	private boolean seco;
 	
 	/**<b>Constructor</b> para ser de regadío
-	 * @param (super) parte heredada de Cultivo, seco boolean que indica si la planta se ha secado*/
+	 * @param nombre nombre del Cultivo
+	 * @param tiempoParaCrecer es el tiempo necesario para dar la primera cosecha
+	 * @param recosechable indica si se puede volver a cosechar tras la primera cosecha
+	 * */	
 	public Regadío(String nombre, int tiempoParaCrecer,boolean recosechable) {
 		super(nombre, tiempoParaCrecer, recosechable);
 		seco=false;

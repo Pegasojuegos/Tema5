@@ -15,10 +15,9 @@ public abstract class Cultivo implements Comparable<Cultivo>{
 	/**
 	 * <b>Constructor</b> que define como se creara la parte de <i>cultivo</i> de todas sus subclases,
 	 * las cuales heredarán esta parte (super) y añadirán la suya propia
-	 * @param nombre Nombre de la planta, tiempoParaCrecer Días necesarios para que florezca,
-	 * recosechable capacidad de volver a florezer tras la primera cosecha,agua y nutrientes cantidad que
-	 * tiene la planta, se establece a 0,cosechable indica si la planta a florecido, tiempoEntreCosechas tiempo
-	 * para la recosecha el cual es la mitad al que necesita para crecer*/
+	 * @param nombre Nombre de la planta
+	 * @param tiempoParaCrecer Días necesarios para que florezca,
+	 * @param recosechable capacidad de volver a florezer tras la primera cosecha*/
 	public Cultivo(String nombre,int tiempoParaCrecer,boolean recosechable) {
 		this.nombre=nombre;
 		this.tiempoParaCosecha=tiempoParaCrecer;
@@ -41,7 +40,8 @@ public abstract class Cultivo implements Comparable<Cultivo>{
 	}
 	
 	/**Método abstracto que obliga a sus sublcases a estableces una método propio para indicar
-	 * si una planta está muerta*/
+	 * si una planta está muerta.
+	 * @return boolean true si esta muerta false si no*/
 	public abstract boolean isMuerta();
 	
 	/**Método que hace llover, aumentando el agua de la planta*/
@@ -73,7 +73,7 @@ public abstract class Cultivo implements Comparable<Cultivo>{
 	 * por la que compata es el tiempo entre Cosecha, yendo antes los que menos tiempo tengan. En caso
 	 * de igualdad comprueba si son recosechables, yendo antes las que sí lo son. Por último si las
 	 * anteriores son iguales, los ordenará alfabéticamente.
-	 * @param Un objeto de tipo Cultivo con el que comparar este cultivo.
+	 * @param c Un objeto de tipo Cultivo con el que comparar este cultivo.
 	 * @return 1 si el cultivo pasado por parámetro es mayor, -1 si es menot y 0 si son iguales*/
 	@Override
 	public int compareTo(Cultivo c) {

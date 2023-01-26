@@ -3,14 +3,19 @@ package Cultivos;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
-
+/**Clase que contiene el método main.
+ * @author pegaso
+ * @version 2.3*/
 public class Granja {
-	
+	/**Escanes para pedir datos  por pantalla.*/
 	public static Scanner s=new Scanner(System.in);
+	/**String con saltos de línea para <i>"limpiar"</i> la consola.*/
 	public static final String limpiar="\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+	/**String que guardará mometáneamente lo que se ha pescado.*/
 	public static String pesca;
 
-	
+	/**Método main que inicia un juego en el que pordás organizar un huerto y pescar.
+	 * @param args argumentos del main*/
 	public static void main(String[] args) {
 		Huerto h1=new Huerto(5);
 		/*Prueba de que finciona el programa sin interacción
@@ -95,7 +100,9 @@ public class Granja {
 			cerrar=operación(h1);
 		}
 	}
-	//Función que pide la operación 
+	/**Función que muestra las opciones y pide la operación a realizar. 
+	 * @param h1 Huerto que se está utilizando.
+	 * @return true si se decide cerrar el programa o false si continua.*/
 	public static boolean operación(Huerto h1) {
 		String opciones=""
 				+ "\nOpciones:\n"
@@ -180,7 +187,8 @@ public class Granja {
 		return false;
 	}
 	
-	//Función que te pide los datos necesatios para llamar al metodo de huerto.plantar
+	/**Función que te pide los datos necesatios para llamar al metodo de huerto.plantar
+	 * @param h1 Huerto en el que plantar el Cultivo.*/
 	public static void plantar(Huerto h1) {
 		System.out.println("\n¿Cuántos cultivos quieres plantar?");
 		int cantidad=s.nextInt();
@@ -216,7 +224,8 @@ public class Granja {
 		}
 	}
 	
-	//Función que hace una animación de dormir mientras avanza el día
+	/**Función que hace una animación de dormir mientras avanza el día.
+	 * @throws InterruptedException excepción lanzada si otra tarea le manda una interrupción y esta está parada*/
 	public static void dormir() throws InterruptedException {
 		String uno=""
 				+ "\n"
@@ -249,6 +258,9 @@ public class Granja {
 			Thread.sleep(250);
 		}
 	}
+	/**Función que extrae en nombre del pescado del String dado por el metodo pescar().
+	 * @param pez String devuelto por el método pescar()
+	 * @return String nombre del pescado obtenido*/
 	public static String pescado(String pez) {
 		String res="";
 		if(pez.contains("un ")) {

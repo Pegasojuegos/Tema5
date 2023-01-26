@@ -1,25 +1,32 @@
 package Cultivos;
 
 import java.util.Arrays;
-
+/**Clase que almacena un array de Cultivos y un inventario de tipo String.
+ * @author pegaso
+ * @version 2.3*/
 public class Huerto {
 	private Cultivo huerto[];
 	private Inventario inventario=new Inventario<String>();
 	
-	public void añadeAInventario(String item){
-		inventario.añadir(item);
-	}
-	
-
+	/**<b>Consructor</b> para crear un nuevo huerto con el tamaño indicado
+	 * @param tamaño huecos del huerto.*/
 	public Huerto(int tamaño) {
 		huerto=new Cultivo[tamaño];
 	}
 	
+	/**Método para añadir un ítem al inventario del huerto.
+	 * @param item nombre del ítem.*/
+	public void añadeAInventario(String item){
+		inventario.añadir(item);
+	}
+	
+	/**Método para ordenar el huerto, utilizando el compareTo de Cultivo.*/
 	public void ordenar() {
 		Arrays.sort(huerto);
 	}
 	
-	//Regar una cultivo concreto
+	/**Método que llama al método regar de un cultivo.
+	 * @param nombre nombre del cultivo a regar.*/
 	public void regar(String nombre) {
 		for(int i=0;i<huerto.length;i++) {
 			if(huerto[i]!=null) {
@@ -29,7 +36,8 @@ public class Huerto {
 			}
 		}
 	}
-	//Regar todas los cultivos que sean de regadío
+	
+	/**Método para regar todos los cultivos que sean de regadío.*/
 	public void regar() {
 		for(int i=0;i<huerto.length;i++) {
 			if(huerto[i]!=null) {
@@ -39,17 +47,20 @@ public class Huerto {
 			}
 		}
 	}
-	//Abonar a un cultivo concreto
+	
+	/**Método que llama al método de abonar de un cultivo.
+	 * @param nombre nombre del cultivo a abonar.*/
 	public void abonar(String nombre) {
 		for(int i=0;i<huerto.length;i++) {
 			if(huerto[i]!=null) {
-				if(huerto[i].getNombre().equals(nombre)&huerto[i]instanceof Regadío) {
-					((Regadío)huerto[i]).abonar();
+				if(huerto[i].getNombre().equals(nombre)) {
+					huerto[i].abonar();
 				}
 			}
 		}
 	}
-	//Abonar todos los cultivos
+
+	/**Método para abonar todos los cultivos del huerto.*/
 	public void abonar() {
 		for(int i=0;i<huerto.length;i++) {
 			if(huerto[i]!=null) {
@@ -58,7 +69,7 @@ public class Huerto {
 		}
 	}
 	
-	//Avanza un día con una probabilidad de que llueva y llamando a crecer
+	/**Método que avanza un día con una probabilidad de que llueva y llamando a crecer*/
 	public void pasarDía() {
 		int llover=(int)(Math.random()*10+1);
 		for(int i=0;i<huerto.length;i++) {
@@ -69,7 +80,9 @@ public class Huerto {
 			}
 		}
 	}
-	//Cosecha un cultivo concreto
+	
+	/**Método que cosecha un cultivo concreto.
+	 * @param nombre nombre del cultivo a cosechar.*/
 	public void cosechar(String nombre) {
 		for(int i=0;i<huerto.length;i++) {
 			if(huerto[i]!=null) {
@@ -80,7 +93,8 @@ public class Huerto {
 			}
 		}
 	}
-	//Intenta cosechar todos los cultivos
+	
+	/**Método que cosecha todos los cultivos cosechables*/
 	public void cosechar() {
 		for(int i=0;i<huerto.length;i++) {
 			if(huerto[i]!=null) {
@@ -90,7 +104,8 @@ public class Huerto {
 		}
 	}
 	
-	//Planta un cultivo en el huerto
+	/**Método que planta un cultivo en el huerto.
+	 * @param c1 Cultivo a plantar.*/
 	public void plantar(Cultivo c1) {
 		for(int c=0;c<huerto.length;c++) {
 			if(huerto[c]==null) {
@@ -106,6 +121,8 @@ public class Huerto {
 		}//for
 	}//plantar
 	
+	/**Método que esribe en verde cada Cultivo, llamando a su propio método toString.
+	 * @return String con todos los cultivos.*/
 	public String toString() {
 		StringBuilder res=new StringBuilder();
 		res.append("\u001B[32m");
@@ -119,6 +136,8 @@ public class Huerto {
 		return res.toString();
 	}
 
+	/**Método para obtener el inventario interno del huerto.
+	 * @return inventario del huerto.*/
 	public Inventario getInventario() {
 		return inventario;
 	}

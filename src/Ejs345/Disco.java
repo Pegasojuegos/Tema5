@@ -10,6 +10,9 @@ public class Disco extends Multimedia{
 		this.género=géneros.valueOf(género);
 	}
 
+	public String suena() {
+		return "lalalala";
+	}
 
 	public géneros getGénero() {
 		return género;
